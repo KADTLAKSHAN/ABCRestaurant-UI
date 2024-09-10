@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Inquiries - ABC Restaurant</title>
+    <link rel="stylesheet" href="customerpanelstyles.css" />
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+  </head>
+  <body>
+    <div class="container">
+      <aside class="sidebar">
+        <h2>ABC Restaurant Customer Panel</h2>
+        <nav>
+          <ul>
+            <li><a href="profile.html">Profile Details</a></li>
+            <li><a href="customerReservation.html">Reservations</a></li>
+            <li><a href="ratings.html">Ratings</a></li>
+            <li><a href="inquiries.html">Inquiries</a></li>
+          </ul>
+        </nav>
+        <button id="logout" class="btn-logout">Logout</button>
+      </aside>
+
+      <main class="main-content">
+        <h2>Inquiries</h2>
+        <table>
+          <thead>
+            <tr>
+              <th>Inquire ID</th>
+              <th>User Name</th>
+              <th>Inquire Type</th>
+              <th>Description</th>
+              <th>Feedback</th>
+              <th>Reply</th>
+              <th>Date</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>1</td>
+              <td>JohnDoe</td>
+              <td>Complaint</td>
+              <td>Issue with order</td>
+              <td>Resolved</td>
+              <td>Thank you for your feedback.</td>
+              <td>2024-09-01</td>
+            </tr>
+          </tbody>
+        </table>
+        <form>
+          <label for="inquireType">Inquire Type:</label>
+          <select id="inquireType" name="inquireType">
+            <option value="Reservation Request">Reservation Request</option>
+            <option value="Catering Inquiry">Catering Inquiry</option>
+            <option value="Event Booking">Event Booking</option>
+            <option value="Menu Information">Menu Information</option>
+            <option value="Dietary Restrictions">Dietary Restrictions</option>
+            <option value="Feedback/Complaints">Feedback/Complaints</option>
+            <option value="General Questions">General Questions</option>
+          </select>
+
+          <label for="inquireDescription">Description:</label>
+          <textarea
+            id="inquireDescription"
+            name="inquireDescription"
+          ></textarea>
+          <button type="submit">Add Inquiry</button>
+        </form>
+      </main>
+    </div>
+    <script src="inquiriesscriptcustomer.js"></script>
+  </body>
+</html>

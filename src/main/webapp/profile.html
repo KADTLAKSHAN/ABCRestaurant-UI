@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Profile Details - ABC Restaurant</title>
+    <link rel="stylesheet" href="customerpanelstyles.css" />
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+  </head>
+  <body>
+    <div class="container">
+      <aside class="sidebar">
+        <h2>ABC Restaurant Customer Panel</h2>
+        <nav>
+          <ul>
+            <li><a href="profile.html">Profile Details</a></li>
+            <li><a href="customerReservation.html">Reservations</a></li>
+            <li><a href="ratings.html">Ratings</a></li>
+            <li><a href="inquiries.html">Inquiries</a></li>
+          </ul>
+        </nav>
+        <button id="logout" class="btn-logout">Logout</button>
+      </aside>
+
+      <main class="main-content">
+        <h2>Profile Details</h2>
+        <form id="userProfileForm">
+          <label for="username">Username:</label>
+          <input type="text" id="username" name="username" readonly />
+          <label for="firstName">First Name:</label>
+          <input type="text" id="firstName" name="firstName" />
+          <label for="lastName">Last Name:</label>
+          <input type="text" id="lastName" name="lastName" />
+          <label for="email">Email:</label>
+          <input type="email" id="email" name="email" />
+          <label for="address">Address:</label>
+          <input type="text" id="address" name="address" />
+          <label for="age">Age:</label>
+          <input type="number" id="age" name="age" />
+          <label for="phoneNumber">Phone Number:</label>
+          <input type="tel" id="phoneNumber" name="phoneNumber" />
+          <label for="password">Password:</label>
+          <input type="password" id="password" name="password" />
+          <button type="submit">Update</button>
+        </form>
+      </main>
+    </div>
+
+    <script src="profilescript.js"></script>
+  </body>
+</html>

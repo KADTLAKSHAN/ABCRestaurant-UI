@@ -1,0 +1,824 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
+      integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <link
+      href="https://cdn.jsdelivr.net/npm/remixicon@4.3.0/fonts/remixicon.css"
+      rel="stylesheet"
+    />
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" />
+    <link href="styles.css" rel="stylesheet" />
+    <link href="loginregister.css" rel="stylesheet" />
+
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+    <title>ABC RESTAURANT</title>
+  </head>
+
+  <body>
+    <nav>
+      <div class="nav_header">
+        <div class="logo nav_logo">
+          <a href="#"
+            >🍜 ABC <span>Restaurant</span>
+            <!-- <span class="chinese_text">食尚风味 Shí shàng fēngwèi - Sri Lankan Restaurant</span>     -->
+          </a>
+        </div>
+
+        <div class="nav_menu_btn" id="menu_btn">
+          <span><i class="ri-menu-line"></i></span>
+        </div>
+      </div>
+
+      <ul class="nav_links" id="nav_links">
+        <li><a href="#home">Home</a></li>
+        <li><a href="product.html">Order Now</a></li>
+        <li><a href="#reservation">Reservation</a></li>
+        <li><a href="#servicesSec">Services</a></li>
+      </ul>
+
+      <div class="nav_btn">
+        <button class="btn" id="user-btn">
+          <i class="fa-solid fa-user-gear"></i>
+        </button>
+      </div>
+    </nav>
+
+    <!-- ........................navigation bar end..................... -->
+
+    <header class="section_container header_container" id="home">
+      <div class="header_image" data-aos="fade-down" data-aos-delay="100">
+        <img src="assests/ai-generated-8123681_1920.png" alt="header" />
+      </div>
+
+      <div class="header_content" data-aos="fade-right" data-aos-delay="200">
+        <h1>Elevate Your Dining, <span>Every Bite a Delight!</span></h1>
+        <p class="section_description">
+          Step into a world of culinary artistry where elegance meets
+          innovation. Our fine dining experience is crafted to delight your
+          senses with meticulously prepared dishes, exquisite ingredients, and
+          impeccable service. Whether you’re celebrating a special occasion or
+          enjoying a sophisticated night out, our elegant ambiance and gourmet
+          menu promise an unforgettable dining journey.
+        </p>
+
+        <div class="header_btn">
+          <button class="btn" onclick="scrollToReservationSection()">
+            Reserve Your Table Now
+          </button>
+        </div>
+      </div>
+    </header>
+
+    <!-- ........................end............................ -->
+
+    <section class="section_container special_container" id="special">
+      <h2 class="section_header">Our Special Dish</h2>
+      <p class="section_description">
+        Indulge in a culinary journey where each dish is a masterpiece. Our menu
+        features meticulously crafted creations using the finest, locally
+        sourced ingredients. From elegantly plated appetizers to sumptuous
+        entrees and decadent desserts, every bite is a testament to our
+        commitment to excellence and innovation
+      </p>
+
+      <div class="special_grid">
+        <div class="special_card">
+          <img src="assests/Ceviche Prawn.png" alt="special-1" />
+          <h4>Ceviche Prawn</h4>
+          <p>
+            Delight in our Ceviche Prawn, where succulent prawns are marinated
+            in a vibrant blend of citrus juices, fresh herbs, and a touch of
+            chili. This refreshing dish is garnished with crisp vegetables and
+            served with a hint of avocado, offering a perfect balance of tangy,
+            zesty, and subtly spicy flavors.
+          </p>
+
+          <div class="special_rating">
+            <span><i class="ri-star-fill"></i></span>
+            <span><i class="ri-star-fill"></i></span>
+            <span><i class="ri-star-fill"></i></span>
+            <span><i class="ri-star-half-line"></i></span>
+            <span><i class="ri-star-line"></i></span>
+          </div>
+
+          <!-- <div class="special_footer">
+            <p class="price">$12.50</p>
+            <button class="btn">Add to cart</button>
+          </div> -->
+        </div>
+
+        <div class="special_card">
+          <img src="assests/oyster.png" alt="special-1" />
+          <h4>Raw Oysters</h4>
+          <p>
+            Experience the pure essence of the ocean with our Raw Oysters,
+            delicately shucked and served on the half shell. Each oyster is
+            plump and briny, complemented by a refreshing mignonette sauce and a
+            wedge of lemon. Enjoy a taste of the sea that's both elegant and
+            invigorating.
+          </p>
+
+          <div class="special_rating">
+            <span><i class="ri-star-fill"></i></span>
+            <span><i class="ri-star-fill"></i></span>
+            <span><i class="ri-star-fill"></i></span>
+            <span><i class="ri-star-half-line"></i></span>
+            <span><i class="ri-star-line"></i></span>
+          </div>
+
+          <!-- <div class="special_footer">
+            <p class="price">$12.50</p>
+            <button class="btn">Add to cart</button>
+          </div> -->
+        </div>
+
+        <div class="special_card">
+          <img src="assests/crab noodles.webp" alt="special-1" />
+          <h4>Dungeness Crab Cold Noodle</h4>
+          <p>
+            Savor the elegance of our Dungeness Crab Cold Noodle, where tender
+            strands of chilled noodles are paired with succulent Dungeness crab
+            meat. Tossed in a light, savory dressing with fresh herbs, crisp
+            vegetables, and a hint of citrus, this dish offers a refreshing and
+            sophisticated blend of flavors and textures.
+          </p>
+
+          <div class="special_rating">
+            <span><i class="ri-star-fill"></i></span>
+            <span><i class="ri-star-fill"></i></span>
+            <span><i class="ri-star-fill"></i></span>
+            <span><i class="ri-star-half-line"></i></span>
+            <span><i class="ri-star-line"></i></span>
+          </div>
+
+          <!-- <div class="special_footer">
+            <p class="price">$12.50</p>
+            <button class="btn">Add to cart</button>
+          </div> -->
+        </div>
+      </div>
+    </section>
+
+    <!-- ........................end............................ -->
+
+    <section class="section_container explore-container">
+      <div class="explore_image">
+        <img src="assests/birria-8147495_1280.png" alt="explore" />
+      </div>
+
+      <div class="explore_content">
+        <h1 class="section_header">
+          Nourishing Your Body The Health Benefits of Fresh, Whole Ingredients
+        </h1>
+        <p class="section_description">
+          Discover how fresh, whole ingredients can transform your diet and
+          enhance your well-being. By incorporating nutrient-dense foods such as
+          vibrant vegetables, succulent fruits, lean proteins, and wholesome
+          grains into your meals, you provide your body with essential vitamins,
+          minerals, and antioxidants. These wholesome choices support optimal
+          health, boost energy levels, and contribute to a balanced, vibrant
+          lifestyle.
+        </p>
+
+        <div class="explore_btn">
+          <button class="btn">
+            Explore Healthy Eating
+            <span><i class="ri-arrow-right-line"></i></span>
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <!-- ........................Gallery............................ -->
+
+    <h2 class="section_header">Journey Through Our Picture Gallery</h2>
+
+    <section class="section_container gallery_container">
+      <div class="gallery_slide">
+        <div
+          class="gallery_item"
+          style="background-image: url(./restaurantImages/Img1.jpg)"
+        >
+          <div class="gallery_content">
+            <div class="gallery_name">Gourmet Delights Await</div>
+            <div class="gallery_des">
+              Indulge in a culinary journey with our carefully crafted dishes.
+              Each plate is prepared with the finest ingredients and a touch of
+              creativity, promising a dining experience that will delight your
+              taste buds.
+            </div>
+            <button>See More</button>
+          </div>
+        </div>
+
+        <div
+          class="gallery_item"
+          style="background-image: url(./restaurantImages/Img2.jpg)"
+        >
+          <div class="gallery_content">
+            <div class="gallery_name">Artisanal Cuisine</div>
+            <div class="gallery_des">
+              Savor the essence of artisanal cooking with our handcrafted meals.
+              Our menu features seasonal ingredients and traditional techniques
+              that celebrate the art of fine dining.
+            </div>
+            <button>See More</button>
+          </div>
+        </div>
+
+        <div
+          class="gallery_item"
+          style="background-image: url(./restaurantImages/Img3.jpg)"
+        >
+          <div class="gallery_content">
+            <div class="gallery_name">Signature Dishes</div>
+            <div class="gallery_des">
+              Discover our signature creations, each one a masterpiece of flavor
+              and presentation. From innovative appetizers to delectable mains,
+              our dishes are designed to impress and satisfy.
+            </div>
+            <button>See More</button>
+          </div>
+        </div>
+
+        <div
+          class="gallery_item"
+          style="background-image: url(./restaurantImages/Img4.jpg)"
+        >
+          <div class="gallery_content">
+            <div class="gallery_name">Sustainable Dining</div>
+            <div class="gallery_des">
+              Enjoy meals made with locally sourced, sustainable ingredients.
+              Our commitment to eco-friendly practices ensures that every bite
+              is not only delicious but also responsible.
+            </div>
+            <button>See More</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="gallery_button">
+        <button class="gallery_prev">
+          <i class="fa-sharp fa-solid fa-arrow-left"></i>
+        </button>
+        <button class="gallery_next">
+          <i class="fa-sharp fa-solid fa-arrow-right"></i>
+        </button>
+      </div>
+    </section>
+
+    <!-- ........................end............................ -->
+
+    <h2 class="section_header">Explore Our Exclusive Services</h2>
+    <section class="section_container banner_container" id="servicesSec">
+      <div class="banner_card">
+        <span class="banner_icon"><i class="ri-restaurant-2-line"></i></span>
+        <h4>Effortless Online Reservations</h4>
+        <p>
+          Planning a visit? Use our convenient online reservation system to book
+          your table with ease. Whether you’re making a reservation for a
+          romantic dinner or a group gathering, our system allows you to choose
+          your preferred date and time, and receive instant confirmation. We
+          look forward to welcoming you and ensuring a delightful dining
+          experience.
+        </p>
+        <a href="#"
+          >ReadMore <span><i class="ri-arrow-right-line"></i></span
+        ></a>
+      </div>
+
+      <div class="banner_card">
+        <span class="banner_icon"><i class="ri-goblet-2-fill"></i></span>
+        <h4>Savor Our Seasonal Menus and Specials</h4>
+        <p>
+          Discover new flavors and seasonal delights with our regularly updated
+          menus and specials. We take pride in offering dishes that reflect the
+          freshest seasonal ingredients and culinary trends. Keep an eye on our
+          website or visit us to experience our latest creations and
+          limited-time offerings that highlight the best of what’s in season.
+        </p>
+        <a href="#"
+          >ReadMore <span><i class="ri-arrow-right-line"></i></span
+        ></a>
+      </div>
+
+      <div class="banner_card">
+        <span class="banner_icon"><i class="ri-star-smile-fill"></i></span>
+        <h4>Host Your Special Event with Us</h4>
+        <p>
+          Looking for the perfect venue for your special event? Our restaurant
+          offers private dining options and event spaces tailored to your needs.
+          Whether it’s an intimate gathering or a large celebration, we provide
+          personalized service and a delectable menu to make your event
+          unforgettable. Contact us to discuss your requirements and let us help
+          you create a memorable occasion.
+        </p>
+        <a href="#"
+          >ReadMore <span><i class="ri-arrow-right-line"></i></span
+        ></a>
+      </div>
+
+      <div class="banner_card">
+        <span class="banner_icon"><i class="ri-takeaway-fill"></i></span>
+        <h4>Convenient Takeout and Delivery</h4>
+        <p>
+          Craving our signature dishes but prefer to enjoy them at home? Our
+          takeout and delivery service makes it easy to savor your favorites
+          without leaving the comfort of your home. Simply place your order
+          online or by phone, and our team will prepare your meal with the same
+          care and quality as if you were dining in. Enjoy fast and reliable
+          service with your meal delivered hot and fresh.
+        </p>
+        <a href="#"
+          >ReadMore <span><i class="ri-arrow-right-line"></i></span
+        ></a>
+      </div>
+
+      <div class="banner_card">
+        <span class="banner_icon"><i class="ri-drinks-fill"></i></span>
+        <h4>Elegant Dining for Every Occasion</h4>
+        <p>
+          Experience exceptional service and a warm, inviting atmosphere with
+          our dine-in service. Whether you're here for a casual meal with
+          friends or a special celebration, our attentive staff and carefully
+          curated menu ensure a memorable dining experience. Enjoy our cozy
+          ambiance, stylish décor, and a selection of delicious dishes made from
+          the freshest ingredients.
+        </p>
+        <a href="#"
+          >ReadMore <span><i class="ri-arrow-right-line"></i></span
+        ></a>
+      </div>
+
+      <div class="banner_card">
+        <span class="banner_icon"><i class="ri-user-star-fill"></i></span>
+        <h4>Exclusive Chef's Table Experience</h4>
+        <p>
+          For a truly unique dining experience, consider our Chef’s Table. Enjoy
+          a personalized meal prepared right before your eyes by our skilled
+          chefs. This exclusive experience includes a curated tasting menu, wine
+          pairings, and a behind-the-scenes look at our kitchen. Perfect for
+          food enthusiasts and special occasions, the Chef’s Table offers an
+          unforgettable culinary journey.
+        </p>
+        <a href="#"
+          >ReadMore <span><i class="ri-arrow-right-line"></i></span
+        ></a>
+      </div>
+    </section>
+
+    <!-- ........................end............................ -->
+
+    <section class="chef" id="chef">
+      <img
+        src="assests/Ingredient-PNG-Images.png"
+        alt="toppings"
+        class="chef_bg"
+      />
+
+      <div class="section_container chef_container">
+        <div class="chef_image">
+          <img src="assests/asian-chef-png-chef-png-402.png" alt="chef" />
+        </div>
+
+        <div class="chef_content">
+          <h2 class="section_header">
+            Expertly Made by Leading Culinary Talents
+          </h2>
+
+          <p class="section_description">
+            At our restaurant, you'll experience the culinary brilliance of our
+            diverse team of chefs. Our Chinese chefs masterfully blend tradition
+            and innovation, crafting dishes that celebrate authentic flavors.
+            Our Sri Lankan chefs bring vibrant, spice-rich creations that embody
+            the essence of their homeland’s cuisine. Meanwhile, our Italian
+            chefs infuse every meal with a passion for fresh ingredients and
+            classic techniques, offering an authentic taste of Italy. Together,
+            they create a dining experience that's both globally inspired and
+            uniquely exceptional.
+          </p>
+
+          <ul class="chef_list">
+            <li>
+              <span><i class="ri-checkbox-fill"></i></span>Chef Li Wei Renowned
+              for his expertise in traditional and contemporary Chinese cuisine.
+            </li>
+
+            <li>
+              <span><i class="ri-checkbox-fill"></i></span>Chef Anaya Perera
+              Celebrated for her vibrant and authentic Sri Lankan dishes, rich
+              with spice and flavor.
+            </li>
+
+            <li>
+              <span><i class="ri-checkbox-fill"></i></span>Chef Marco Rossi
+              Known for his passion for traditional Italian cooking and
+              commitment to using the finest, freshest ingredients.
+            </li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- ........................Reservation............................ -->
+
+    <section class="section_container reservation-container" id="reservation">
+      <div class="container-time">
+        <h2 class="time-header">Time Open</h2>
+        <h3 class="day-header">Monday - Friday</h3>
+        <p>7am - 11am (breakfast)</p>
+        <p>11am - 10pm (lunch/dinner)</p>
+
+        <h3 class="day-header">Saturday - Sunday</h3>
+        <p>9am - 1pm (breakfast)</p>
+        <p>1pm - 10pm (lunch/dinner)</p>
+
+        <hr />
+
+        <h4 class="phone-heading">Call Us: (+94) 123-321-234</h4>
+      </div>
+
+      <div class="reservation-form">
+        <div class="form">
+          <h2 class="time-header heading-yellow">Reservation Online</h2>
+          <div class="form-element">
+            <label for="txtReservationUser">Username</label>
+            <input
+              type="text"
+              id="txtReservationUser"
+              placeholder="Enter Username"
+            />
+          </div>
+
+          <div class="form-element">
+            <label for="txtReservationUserEmail">Email</label>
+            <input
+              type="text"
+              id="txtReservationUserEmail"
+              placeholder="Enter User Email"
+            />
+          </div>
+
+          <div class="form-element">
+            <label for="dateReservation">Date</label>
+            <input type="date" id="dateReservation" />
+          </div>
+
+          <div class="form-element">
+            <label for="timeReservation">Time</label>
+            <select name="timeRes" id="timeReservation">
+              <option value="10 AM">10 AM</option>
+              <option value="1 PM">1 PM</option>
+            </select>
+          </div>
+
+          <div class="form-element">
+            <label for="people">How many people</label>
+            <select name="timeRes" id="people">
+              <option value="1">1 Person</option>
+              <option value="2">2 Person</option>
+              <option value="3">3 Person</option>
+              <option value="4">4 Person</option>
+              <option value="5">5 Person</option>
+              <option value="6">6 Person</option>
+            </select>
+          </div>
+
+          <button class="btn-reservation" id="btnReservation">
+            Reserve My Table
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <!-- ........................end............................ -->
+
+    <!-- ........................Reservation payment............................ -->
+
+    <!-- The Modal -->
+    <div id="paymentModal" class="modal">
+      <div class="modal-content">
+        <span id="closeModalBtn" class="close">&times;</span>
+        <h2>Payment Details</h2>
+        <div class="bill-details">
+          <p><strong>Total Bill:</strong> Rs 1500.00</p>
+        </div>
+        <form id="paymentForm">
+          <label for="cardNumber">Card Number</label>
+          <input
+            type="text"
+            id="cardNumber"
+            name="cardNumber"
+            placeholder="Card Number"
+            required
+          />
+
+          <label for="cardName">Cardholder Name</label>
+          <input
+            type="text"
+            id="cardName"
+            name="cardName"
+            placeholder="Cardholder Name"
+            required
+          />
+
+          <label for="expiryDate">Expiry Date</label>
+          <input
+            type="text"
+            id="expiryDate"
+            name="expiryDate"
+            placeholder="MM/YY"
+            required
+          />
+
+          <label for="cvv">CVV</label>
+          <input type="text" id="cvv" name="cvv" placeholder="CVV" required />
+
+          <button type="button" class="btn-payment" onclick="makePayment()">
+            Pay Now
+          </button>
+        </form>
+      </div>
+    </div>
+
+    <!-- ........................end............................ -->
+
+    <!-- ........................Ratings............................ -->
+
+    <section class="section_container client_container" id="client">
+      <h2 class="section_header">What Our Guests Are Saying</h2>
+
+      <p class="section_description">
+        Discover why our diners keep coming back. Read their stories and see
+        what makes our restaurant a favorite choice.
+      </p>
+
+      <div class="client_slider">
+        <div class="client_slides">
+          <div class="client_slide active">
+            <div class="client_card">
+              <p>
+                The food at ABC Restaurant was fantastic, and the service was
+                top-notch. I especially loved the Oyster Dish. Will definitely
+                return!
+              </p>
+
+              <img src="assests/client.png" alt="client" />
+              <h4>David Lee</h4>
+              <h5>Business Executive</h5>
+            </div>
+          </div>
+
+          <div class="client_slide">
+            <div class="client_card">
+              <p>
+                I stumbled upon ABC Restaurant and was blown away by the quality
+                of the food and the cozy atmosphere. The Lobster was incredible.
+                Highly recommend!
+              </p>
+
+              <img src="assests/client.png" alt="client" />
+              <h4>David Lee</h4>
+              <h5>Business Executive</h5>
+            </div>
+          </div>
+
+          <div class="client_slide">
+            <div class="client_card">
+              <p>
+                Great food, great service, and a lovely ambiance. The [specific
+                dish] was a highlight. Can’t wait to come back!
+              </p>
+
+              <img src="assests/client.png" alt="client" />
+              <h4>David Lee</h4>
+              <h5>Business Executive</h5>
+            </div>
+          </div>
+        </div>
+
+        <div class="client_pagination">
+          <span class="client_bullet active" data-slide="0"></span>
+          <span class="client_bullet" data-slide="1"></span>
+          <span class="client_bullet" data-slide="2"></span>
+        </div>
+      </div>
+    </section>
+
+    <!-- ........................Login start............................ -->
+
+    <div class="popup">
+      <div class="close-btn">&times;</div>
+      <div class="form">
+        <h2>Customer Log in</h2>
+        <div class="form-element">
+          <label for="txtLoginUserName">Username</label>
+          <input
+            type="text"
+            id="txtLoginUserName"
+            placeholder="Enter Username"
+          />
+        </div>
+
+        <div class="form-element">
+          <label for="txtLoginPassword">Password</label>
+          <input
+            type="password"
+            id="txtLoginPassword"
+            placeholder="Enter password"
+          />
+        </div>
+
+        <div class="form-element">
+          <input type="checkbox" id="remember-me" />
+          <label for="remember-me">Remember me</label>
+        </div>
+
+        <div class="form-element">
+          <button id="btn-login" onclick="userLogin()">Sign in</button>
+        </div>
+
+        <div class="form-element">
+          <a href="#" id="user-register-link">Don't have an account?</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- ........................Staf Login start............................ -->
+
+    <div class="staff-popup">
+      <div class="close-btn">&times;</div>
+      <div class="form">
+        <h2>Staff Log in</h2>
+        <div class="form-element">
+          <label for="txtStaffUserName">Username</label>
+          <input
+            type="text"
+            id="txtStaffUserName"
+            placeholder="Enter Username"
+          />
+        </div>
+
+        <div class="form-element">
+          <label for="txtStaffPassword">Password</label>
+          <input
+            type="password"
+            id="txtStaffPassword"
+            placeholder="Enter password"
+          />
+        </div>
+
+        <div class="form-element">
+          <label for="user-role">User Type</label>
+          <select id="user-role">
+            <option value="Manager">Manager</option>
+            <option value="Admin">Administrator</option>
+          </select>
+        </div>
+
+        <div class="form-element">
+          <button id="btn-loginstaff" onclick="staffLogin()">Sign in</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- ........................Register Start............................ -->
+
+    <div class="register-popup">
+      <div class="close-btn">&times;</div>
+      <div class="form">
+        <h2>Create Your Customer Account</h2>
+        <div class="form-element">
+          <label for="txtuserName">Username</label>
+          <input
+            type="text"
+            id="txtRegisterUserName"
+            placeholder="Enter Username"
+          />
+        </div>
+
+        <div class="form-element">
+          <label for="txtFirstName">First Name</label>
+          <input type="text" id="txtFirstName" placeholder="Enter Firstname" />
+        </div>
+
+        <div class="form-element">
+          <label for="txtLastName">Last Name</label>
+          <input type="text" id="txtLastName" placeholder="Enter Lastname" />
+        </div>
+
+        <div class="form-element">
+          <label for="txtEmail">Email</label>
+          <input type="text" id="txtEmail" placeholder="Enter Email" />
+        </div>
+
+        <div class="form-element">
+          <label for="txtAddress">Address</label>
+          <input type="text" id="txtAddress" placeholder="Enter Address..." />
+        </div>
+
+        <div class="form-element">
+          <label for="txtAge">Age</label>
+          <input type="number" id="txtAge" placeholder="Enter Age" />
+        </div>
+
+        <div class="form-element">
+          <label for="txtPhoneNumber">Phone Number</label>
+          <input
+            type="text"
+            id="txtPhoneNumber"
+            placeholder="Enter Phone Number"
+          />
+        </div>
+
+        <div class="form-element">
+          <label for="txtRegisterPassword">Password</label>
+          <input
+            type="password"
+            id="txtRegisterPassword"
+            placeholder="Enter password"
+          />
+        </div>
+
+        <div class="form-element">
+          <button id="btn-Register" onclick="userRegister()">Register</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- ........................Footer Start............................ -->
+
+    <footer class="footer" id="Contact">
+      <div class="section_container footer_container">
+        <div class="footer_col">
+          <div class="logo footer_logo">
+            <a href="#">ABC<span> Restaurant</span></a>
+          </div>
+
+          <p class="section_description">
+            Thank you for dining with us! We hope you enjoyed your experience
+            and look forward to welcoming you back soon. Stay connected with us
+            for updates and special offers!
+          </p>
+        </div>
+
+        <div class="footer_col">
+          <h4>Product</h4>
+          <ul class="footer_links">
+            <li><a href="#">Menu</a></li>
+            <li><a href="#">Special</a></li>
+            <li><a href="#">Meal Deals</a></li>
+            <li><a href="#">Catering Options</a></li>
+            <li><a href="#">Seasonal Offerings</a></li>
+          </ul>
+        </div>
+
+        <div class="footer_col">
+          <h4>Information</h4>
+          <ul class="footer_links">
+            <li><a href="#">About us</a></li>
+            <li><a href="#">Contact Us</a></li>
+            <li><a href="#" id="btn-staff-login">Staff Only</a></li>
+            <li><a href="#">Nutrition Information</a></li>
+            <li><a href="#">Allergan Information</a></li>
+          </ul>
+        </div>
+
+        <div class="footer_col">
+          <h4>Company</h4>
+          <ul class="footer_links">
+            <li><a href="#">Our Story</a></li>
+            <li><a href="#">Careers</a></li>
+            <li><a href="#">Terms of Services</a></li>
+            <li><a href="#">Privacy Policy</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="footer_bar">
+        Copyright © 2024 Web Design Mastery. All right reserved.
+      </div>
+    </footer>
+
+    <script src="main.js"></script>
+    <script src="loginregister.js"></script>
+
+    <!-- Animation Javascript -->
+
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+
+    <script>
+      AOS.init();
+    </script>
+  </body>
+</html>

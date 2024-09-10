@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>ABC Resturant Product</title>
+    <link href="productstyle.css" rel="stylesheet" />
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+    <!-- fonts and icons -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
+    />
+  </head>
+
+  <body>
+    <header class="header">
+      <nav class="header--menu">
+        <div class="burger--icon">
+          <i class="fa-solid fa-home"></i>
+        </div>
+
+        <div class="search--box">
+          <i class="fa-solid fa-magnifying-glass"></i>
+          <input type="text" placeholder="Search...." id="searchInput" />
+        </div>
+
+        <div class="menu--icon">
+          <i class="fa-solid fa-bowl-food"></i>
+          <div class="cart-icon">
+            <i class="fa-solid fa-cart-shopping"></i>
+            <span>0</span>
+          </div>
+        </div>
+      </nav>
+    </header>
+
+    <!-- Cover section -->
+
+    <section class="cover">
+      <div class="cover--overlay">
+        <h1>Quick Bite</h1>
+        <span class="slogan">Where Taste Takes The Fast Lane</span>
+      </div>
+    </section>
+
+    <main>
+      <h2 class="section-heading">Food Categories</h2>
+      <div class="menu--list">
+        <!-- <div class="menu--item">
+          <img src="assests/dishesforproduction.png" alt="dish" />
+          <h5>Salad</h5>
+        </div>
+
+        <div class="menu--item">
+          <img src="assests/dishesforproduction.png" alt="dish" />
+          <h5>Salad</h5>
+        </div> -->
+      </div>
+
+      <!-- Card item section-->
+      <h2 class="section-heading">Menu Items</h2>
+      <div class="card--list">
+        <div class="card">
+          <img src="assests/dishesforproduction.png" alt="item" />
+          <h4 class="card--title">Salad</h4>
+
+          <div class="card--price">
+            <div class="price">$3.50</div>
+            <i class="fa-solid fa-plus add-to-cart"></i>
+          </div>
+        </div>
+      </div>
+
+      <!-- Card slider bar -->
+
+      <div class="slidebar" id="slidebar">
+        <div class="slidebar-close">
+          <i class="fa-solid fa-close"></i>
+        </div>
+        <div class="cart-menu">
+          <h3>My Cart</h3>
+          <div class="cart-item"></div>
+        </div>
+
+        <div class="slidebar--footer">
+          <div class="total--amount">
+            <h5>Total</h5>
+            <div class="cart-total">$0.00</div>
+          </div>
+          <button class="checkout-btn">Checkout</button>
+        </div>
+      </div>
+    </main>
+
+    <script src="productscript.js"></script>
+  </body>
+</html>

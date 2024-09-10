@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Reservations - ABC Restaurant</title>
+    <link rel="stylesheet" href="customerpanelstyles.css" />
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+  </head>
+  <body>
+    <div class="container">
+      <aside class="sidebar">
+        <h2>ABC Restaurant Customer Panel</h2>
+        <nav>
+          <ul>
+            <li><a href="profile.html">Profile Details</a></li>
+            <li><a href="customerReservation.html">Reservations</a></li>
+            <li><a href="ratings.html">Ratings</a></li>
+            <li><a href="inquiries.html">Inquiries</a></li>
+          </ul>
+        </nav>
+        <button id="logout" class="btn-logout">Logout</button>
+      </aside>
+
+      <main class="main-content">
+        <h2>Reservations</h2>
+        <table>
+          <thead>
+            <tr>
+              <th>Reservation ID</th>
+              <th>Email</th>
+              <th>Date</th>
+              <th>Time</th>
+              <th>People</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>1</td>
+              <td>johndoe@example.com</td>
+              <td>2024-09-15</td>
+              <td>19:00</td>
+              <td>4</td>
+            </tr>
+          </tbody>
+        </table>
+        <form>
+          <h3>Add New Reservation</h3>
+
+          <label for="reservationEmail">Email:</label>
+          <input type="email" id="reservationEmail" name="reservationEmail" />
+
+          <label for="reservationDate">Date:</label>
+          <input type="date" id="reservationDate" name="reservationDate" />
+
+          <label for="reservationTime">Time:</label>
+          <select id="reservationTime" name="reservationTime">
+            <option value="10 AM">10 AM</option>
+            <option value="1 PM">1 PM</option>
+          </select>
+
+          <select id="reservationPeople" name="reservationPeople">
+            <option value="1">1 Person</option>
+            <option value="2">2 Person</option>
+            <option value="3">3 Person</option>
+            <option value="4">4 Person</option>
+            <option value="5">5 Person</option>
+            <option value="6">6 Person</option>
+          </select>
+
+          <button type="submit" class="btn-primary">Add Reservation</button>
+        </form>
+      </main>
+    </div>
+
+    <script src="customerReservationsScript.js"></script>
+  </body>
+</html>
