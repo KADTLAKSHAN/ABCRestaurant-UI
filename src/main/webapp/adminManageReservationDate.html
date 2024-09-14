@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+
+
+<html>
+
+    <head>
+
+        <title>ABC Restaurant || Staff</title>
+        <link rel="stylesheet" href="https://maxst.icons8.com/vue-static/landings/line-awesome/line-awesome/1.3.0/css/line-awesome.min.css">
+        <link rel="stylesheet" href="adminpanelstyle.css">
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-aFq/bzH65dt+w6FI2ooMVUpc+21e0SRygnTpmBvdBgSdnuTN7QbdgL+OapgHtvPp" crossorigin="anonymous">
+        <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js" integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha2/dist/js/bootstrap.min.js" integrity="sha384-heAjqF+bCxXpCWLa6Zhcp4fu20XoNIA98ecBC1YkdXhszjoejr5y9Q77hIrv8R9i" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+        <link rel="stylesheet" href="CSS/patientregister.css">
+        <script src="JS/myScripts.js"></script>
+
+    </head>
+
+
+
+    <body>
+
+        <input type="checkbox" id="nav-toggle">
+        <div class="sidebar">
+            <div class="sidebar-brand">
+                <h2><span class="las la-user-shield"></span><span>ABC Restaurant</span></h2>
+            </div>
+
+
+            <div class="sidebar-menu">
+
+                <ul> 
+                    <li>
+                        <a href="adminDashboard.html"><span class="las las la-user"></span>
+                        <span>User Accounts</span></a>
+                    </li>
+
+                    <li>
+                        <a href="manageReservation.html"><span class="las la-address-book"></span>
+                        <span>Reservations</span></a>
+                    </li>
+
+                    <li>
+                        <a href="manageInquires.html" ><span class="las la-user-lock"></span>
+                        <span>Inquires</span></a>
+                    </li>
+
+                    <li>
+                        <a href="manageProduct.html" ><span class="las las la-hotdog"></span>
+                        <span>Products</span></a>
+                    </li>
+
+                    <li>
+                        <a href="manageCategory.html"><span class="las las la-pepper-hot"></span>
+                        <span>Category</span></a>
+                    </li>
+
+                    <li>
+                        <a href="adminManageReservationDate.html" class="active"><span class="las la-calendar"></span>
+                        <span>Disable Dates</span></a>
+                    </li>
+                </ul>
+
+            </div>
+        </div>
+
+        <div class="main-content">
+            <header>
+                <h2>
+                    <label for="nav-toggle">
+                        <span class="las la-bars"></span>
+                    </label>
+
+                    Disable Unavailable Dates for Reservation
+
+                </h2>
+
+
+
+                <div class="user-wrapper">
+                    <img src="images/shield.png" width="30px" height="30px" alt="">
+                    <form method="post">
+                        <h4 id="user-greeting">Test</h4>
+                        <button type="button" id="logout" class="btn btn-danger btn-sm" name="btnLogout">Logout</button>
+                        </form>
+                </div>
+
+            </header>
+
+
+
+            <main>
+                
+                <div class="recent-gridPatientM">
+                    <div class="project">
+
+                        <div class="card">
+                            <form action="" method="post">
+
+                            <div class="card-header">
+                                <h3>Dates</h3>
+
+                                <button type="submit" class="btn btn-info" onclick="refresh();">Refresh</button>
+
+                                </span></button>
+                            </div>
+
+
+                            <div class="card-body">
+                                <div class="table-responsive">
+                                    <table width="100%" id="userTable">
+                                        <thread>
+                                            <tr>
+                                                <td>Date</td>
+                                                <td>Time</td>                                  
+                                            </tr>
+                                        </thread>
+
+                                        <tbody>
+                                        
+                                        
+                                        </tbody>
+                                        
+                                    </table>
+                                </div>
+                            </div>
+
+                            <div class="card-header">
+                                <h3>Manage Date</h3>
+                                <button type="button" class="btn btn-primary" name="btnSearch" onclick="searchReservationDate()">Search</button>
+                                <button type="button" onclick="myFunction()">Hide Search Panel</button>
+                                <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal" data-bs-whatever="@mdo">Add</button>
+                                <button type="button" class="btn btn-danger" onclick="deleteReservationDate()">Delete</button>
+                                <input type="text" id="txtEnter" placeholder="Type here..">
+                            </div>
+                            
+                            </form>
+
+                            <div class="mainpregistermenu" id="formrHide">
+                                <div class="container">
+                                    <div class="pregistertitle">Search, Update and Delete</div>
+                                    <form action="" method="post">
+                                        <div class="puser-details">
+
+                                            <div class="pinput-box">
+                                                <span class="details">Date</span>
+                                                <input type="date" id="dateSearchReservation">
+                                            </div>
+                            
+                                            <div class="pinput-box mb-3">
+                                                <span class="details">Time</span>
+                                                <select class="form-select" id="dplSearchTime">
+                                                    <option value="10 AM">10 AM</option>
+                                                    <option value="1 PM">1 PM</option>
+                                                    <option value="Both">Both</option>
+                                                </select>
+                                            </div>
+                                            
+                                        </div>
+                                        <button type="button" class="btn btn-success" name="btnUpdate" onclick="updateReservationDate()">Update</button>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+            </main>
+
+
+        </div>
+
+
+
+
+        <!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h1 class="modal-title fs-5" id="exampleModalLabel">Add Record</h1>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <form method="post">
+                    
+                    <div class="mb-3">
+                        <label for="addtxtFirstName" class="col-form-label">Date:</label>
+                        <input type="date" class="form-control" id="addDate" required>
+                    </div>
+
+                    <div class="pinput-box mb-3">
+                        <span class="details">Time:</span>
+                        <select class="form-select" id="ddladdTime">
+                            <option value="10 AM">10 AM</option>
+                            <option value="1 PM">1 PM</option>
+                            <option value="Both">Both</option>
+                        </select>
+                    </div>
+
+                    <!-- Modal Footer -->
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                        <button type="button" class="btn btn-primary" name="btnAddUser" onclick="AddReservationDate()">Disable date on calender</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Main Register Menu -->
+
+
+
+
+
+            
+            
+            
+    <script src="reservationDate.js"></script>        
+
+
+    </body>
+
+
+
+
+</html>

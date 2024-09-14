@@ -7,6 +7,8 @@ document.addEventListener("DOMContentLoaded", async () => {
     return;
   }
 
+  setupDateTimeInputs();
+
   const url = `http://localhost:8080/ABCRestaurant/resources/reservations/findreservations/${userName}`;
 
   try {
@@ -147,5 +149,70 @@ async function getGeneratedReservationID() {
       text: "An unexpected error occurred. Please try again. " + error,
     });
     return null;
+  }
+}
+
+//Disable not available times and dates
+
+async function fetchAvailableDateAndTimes() {
+  try {
+    const response = await fetch(
+      "http://localhost:8080/ABCRestaurant/resources/reservations/getDisabledates"
+    );
+    if (!response.ok) {
+      throw new Error("Network response was not ok");
+    }
+
+    const data = await response.json();
+    return data;
+  } catch (error) {
+    console.error("Error fetching availability data:", error);
+    return {};
+  }
+}
+
+async function setupDateTimeInputs() {
+  const disableDates = await fetchAvailableDateAndTimes();
+  const dateInput = document.getElementById("reservationDate");
+  const timeSelector = document.getElementById("reservationTime");
+
+  //change format to YYYY MM DD
+  const today = new Date().toISOString().split("T")[0];
+
+  //disable dates before today
+  dateInput.setAttribute("min", today);
+
+  dateInput.addEventListener("change", (event) => {
+    const selectedDate = event.target.value;
+
+    // Check and disable times based on the selected date
+    Array.from(timeSelector.options).forEach((option) => {
+      const timeKey = `${selectedDate}:${option.value}`;
+      option.disabled = disableDates[timeKey] === false;
+    });
+
+    // Reset time input if the selected time is disabled
+    if (timeInput.options[timeInput.selectedIndex]?.disabled) {
+      timeInput.value = "";
+    }
+  });
+
+  // Disable dates with unavailable times
+  Array.from(dateInput.options).forEach((option) => {
+    const date = option.value;
+    const dateUnavailable =
+      disableDates[`${date}:10 AM`] === false &&
+      disableDates[`${date}:1 PM`] === false;
+
+    option.disabled = dateUnavailable;
+  });
+
+  // Initial setup to handle any preselected date
+  const initialDate = dateInput.value;
+  if (initialDate) {
+    Array.from(timeSelector.options).forEach((option) => {
+      const timeKey = `${initialDate}:${option.value}`;
+      option.disabled = disableDates[timeKey] === false;
+    });
   }
 }

@@ -37,147 +37,291 @@ function scrollToReservationSection() {
   document.getElementById("reservation").scrollIntoView({ behavior: "smooth" });
 }
 
+async function staffLoginChecker() {
+  console.log("Staff login validation is running");
+
+  const userName = document.getElementById("txtStaffUserName").value.trim();
+  const userPassword = document.getElementById("txtStaffPassword").value.trim();
+  const userType = document.getElementById("user-role").value.trim();
+
+  if (userName === "" || userPassword === "" || userType === "") {
+    Swal.fire({
+      icon: "warning",
+      title: "Validation Error",
+      text: "Username, password, and user role cannot be empty. Please fill out all fields.",
+    });
+    return false;
+  }
+
+  // const minPasswordLength = 6;
+  // if (userPassword.length < minPasswordLength) {
+  //   Swal.fire({
+  //     icon: "warning",
+  //     title: "Validation Error",
+  //     text: `Password must be at least ${minPasswordLength} characters long.`,
+  //   });
+  //   return false;
+  // }
+
+  return true;
+}
+
 //staff login
 
 async function staffLogin() {
-  const url = "http://localhost:8080/ABCRestaurant/resources/users/userlogin";
+  if (await staffLoginChecker()) {
+    const url = "http://localhost:8080/ABCRestaurant/resources/users/userlogin";
 
-  const userName = document.getElementById("txtStaffUserName").value;
-  const userPassword = document.getElementById("txtStaffPassword").value;
-  const userType = document.getElementById("user-role").value;
+    const userName = document.getElementById("txtStaffUserName").value;
+    const userPassword = document.getElementById("txtStaffPassword").value;
+    const userType = document.getElementById("user-role").value;
 
-  const options = {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-    },
-    body: JSON.stringify({ userName, userPassword, userType }),
-  };
+    const options = {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ userName, userPassword, userType }),
+    };
 
-  const response = await fetch(url, options);
+    const response = await fetch(url, options);
 
-  if (response.ok) {
-    const data = await response.json();
-    localStorage.setItem("authToken", data.token);
-    localStorage.setItem("userName", data.userName);
-    localStorage.setItem("userType", data.userType);
+    if (response.ok) {
+      const data = await response.json();
+      localStorage.setItem("authToken", data.token);
+      localStorage.setItem("userName", data.userName);
+      localStorage.setItem("userType", data.userType);
 
-    if (userType == "Admin") {
-      window.location.href = "adminDashboard.html";
+      if (userType == "Admin") {
+        window.location.href = "adminDashboard.html";
+      }
+
+      if (userType == "Manager") {
+        window.location.href = "managerDashboard.html";
+      }
+    } else {
+      Swal.fire({
+        icon: "error",
+        title: "Login Failed",
+        text: "Invalid username or password. Please try again.",
+      });
+
+      document.getElementById("txtLoginUserName").value = "";
+      document.getElementById("txtLoginPassword").value = "";
     }
-
-    if (userType == "Manager") {
-      window.location.href = "managerDashboard.html";
-    }
-  } else {
-    Swal.fire({
-      icon: "error",
-      title: "Login Failed",
-      text: "Invalid username or password. Please try again.",
-    });
-
-    document.getElementById("txtLoginUserName").value = "";
-    document.getElementById("txtLoginPassword").value = "";
   }
+}
+
+//Register validation
+
+async function validateRegistrationForm() {
+  console.log("Registration validation is running");
+
+  // Get form values
+  const userName = document.getElementById("txtRegisterUserName").value.trim();
+  const firstName = document.getElementById("txtFirstName").value.trim();
+  const lastName = document.getElementById("txtLastName").value.trim();
+  const email = document.getElementById("txtEmail").value.trim();
+  const address = document.getElementById("txtAddress").value.trim();
+  const age = document.getElementById("txtAge").value.trim();
+  const phoneNumber = document.getElementById("txtPhoneNumber").value.trim();
+  const password = document.getElementById("txtRegisterPassword").value.trim();
+
+  // Basic validation checks
+  if (
+    userName === "" ||
+    firstName === "" ||
+    lastName === "" ||
+    email === "" ||
+    address === "" ||
+    age === "" ||
+    phoneNumber === "" ||
+    password === ""
+  ) {
+    Swal.fire({
+      icon: "warning",
+      title: "Validation Error",
+      text: "All fields are required. Please fill out all fields.",
+    });
+    return false;
+  }
+
+  // Email validation
+  const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+  if (!emailPattern.test(email)) {
+    Swal.fire({
+      icon: "warning",
+      title: "Validation Error",
+      text: "Please enter a valid email address.",
+    });
+    return false;
+  }
+
+  // Age validation (make sure age is a number and within a reasonable range)
+  if (isNaN(age) || age < 1 || age > 120) {
+    Swal.fire({
+      icon: "warning",
+      title: "Validation Error",
+      text: "Please enter a valid age between 1 and 120.",
+    });
+    return false;
+  }
+
+  // Phone number validation (basic example, adjust pattern as needed)
+  const phonePattern = /^\d{10}$/;
+  if (!phonePattern.test(phoneNumber)) {
+    Swal.fire({
+      icon: "warning",
+      title: "Validation Error",
+      text: "Please enter a valid phone number (10 digits).",
+    });
+    return false;
+  }
+
+  // Password validation (example: at least 6 characters long)
+  const minPasswordLength = 6;
+  if (password.length < minPasswordLength) {
+    Swal.fire({
+      icon: "warning",
+      title: "Validation Error",
+      text: `Password must be at least ${minPasswordLength} characters long.`,
+    });
+    return false;
+  }
+
+  return true;
 }
 
 //Register Function
 
 async function userRegister() {
-  const url =
-    "http://localhost:8080/ABCRestaurant/resources/users/customerregister/";
+  if (await validateRegistrationForm()) {
+    const url =
+      "http://localhost:8080/ABCRestaurant/resources/users/customerregister/";
 
-  const customer = {
-    userName: document.getElementById("txtRegisterUserName").value,
-    userFirstName: document.getElementById("txtFirstName").value,
-    userLastName: document.getElementById("txtLastName").value,
-    userEmail: document.getElementById("txtEmail").value,
-    userAddress: document.getElementById("txtAddress").value,
-    userAge: document.getElementById("txtAge").value,
-    userPhoneNumber: document.getElementById("txtPhoneNumber").value,
-    userPassword: document.getElementById("txtRegisterPassword").value,
-    userType: "Customer",
-  };
+    const customer = {
+      userName: document.getElementById("txtRegisterUserName").value,
+      userFirstName: document.getElementById("txtFirstName").value,
+      userLastName: document.getElementById("txtLastName").value,
+      userEmail: document.getElementById("txtEmail").value,
+      userAddress: document.getElementById("txtAddress").value,
+      userAge: document.getElementById("txtAge").value,
+      userPhoneNumber: document.getElementById("txtPhoneNumber").value,
+      userPassword: document.getElementById("txtRegisterPassword").value,
+      userType: "Customer",
+    };
 
-  const options = {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-    },
-    body: JSON.stringify(customer),
-  };
+    const options = {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(customer),
+    };
 
-  try {
-    const response = await fetch(url, options);
+    try {
+      const response = await fetch(url, options);
 
-    if (response.ok) {
-      Swal.fire({
-        icon: "success",
-        title: "Welcome to ABC Restaurant!",
-        text: "Thank you for registering with us. We’re excited to have you join our community! You can now explore our menu, make reservations, and stay updated with our latest offers.",
-      });
+      if (response.ok) {
+        Swal.fire({
+          icon: "success",
+          title: "Welcome to ABC Restaurant!",
+          text: "Thank you for registering with us. We’re excited to have you join our community! You can now explore our menu, make reservations, and stay updated with our latest offers.",
+        });
 
-      document.getElementById("txtRegisterUserName").value = "";
-      document.getElementById("txtFirstName").value = "";
-      document.getElementById("txtLastName").value = "";
-      document.getElementById("txtEmail").value = "";
-      document.getElementById("txtAddress").value = "";
-      document.getElementById("txtAge").value = "";
-      document.getElementById("txtPhoneNumber").value = "";
-      document.getElementById("txtRegisterPassword").value = "";
+        document.getElementById("txtRegisterUserName").value = "";
+        document.getElementById("txtFirstName").value = "";
+        document.getElementById("txtLastName").value = "";
+        document.getElementById("txtEmail").value = "";
+        document.getElementById("txtAddress").value = "";
+        document.getElementById("txtAge").value = "";
+        document.getElementById("txtPhoneNumber").value = "";
+        document.getElementById("txtRegisterPassword").value = "";
 
-      document.querySelector(".register-popup").classList.remove("activepop");
-      document.querySelector(".popup").classList.add("activepop");
-    } else {
+        document.querySelector(".register-popup").classList.remove("activepop");
+        document.querySelector(".popup").classList.add("activepop");
+      } else {
+        Swal.fire({
+          icon: "error",
+          title: "Oops...",
+          text: "Something went wrong! Please try again.",
+        });
+      }
+    } catch (error) {
       Swal.fire({
         icon: "error",
         title: "Oops...",
-        text: "Something went wrong! Please try again.",
+        text: "An unexpected error occurred. Please try again.",
       });
     }
-  } catch (error) {
-    Swal.fire({
-      icon: "error",
-      title: "Oops...",
-      text: "An unexpected error occurred. Please try again.",
-    });
   }
 }
 
-async function userLogin() {
-  const url = "http://localhost:8080/ABCRestaurant/resources/users/userlogin";
+//Validations check
+async function customerLoginChecker() {
+  console.log("im running");
 
-  const userName = document.getElementById("txtLoginUserName").value;
-  const userPassword = document.getElementById("txtLoginPassword").value;
-  const userType = "Customer";
+  const userName = document.getElementById("txtLoginUserName").value.trim();
+  const userPassword = document.getElementById("txtLoginPassword").value.trim();
 
-  const options = {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-    },
-    body: JSON.stringify({ userName, userPassword, userType }),
-  };
-
-  const response = await fetch(url, options);
-
-  if (response.ok) {
-    const data = await response.json();
-    localStorage.setItem("authToken", data.token);
-    localStorage.setItem("userName", data.userName);
-
-    window.location.href = `customerPanel.html?username=${encodeURIComponent(
-      userName
-    )}`;
-  } else {
+  if (userName === "" || userPassword === "") {
     Swal.fire({
-      icon: "error",
-      title: "Login Failed",
-      text: "Invalid username or password. Please try again.",
+      icon: "warning",
+      title: "Validation Error",
+      text: "Username and password cannot be empty. Please fill out both fields.",
     });
+    return false;
+  }
 
-    document.getElementById("txtLoginUserName").value = "";
-    document.getElementById("txtLoginPassword").value = "";
+  // const minPasswordLength = 6;
+  // if (userPassword.length < minPasswordLength) {
+  //   Swal.fire({
+  //     icon: "warning",
+  //     title: "Validation Error",
+  //     text: `Password must be at least ${minPasswordLength} characters long.`,
+  //   });
+  //   return false;
+  // }
+
+  return true;
+}
+
+async function userLogin() {
+  if (await customerLoginChecker()) {
+    const url = "http://localhost:8080/ABCRestaurant/resources/users/userlogin";
+
+    const userName = document.getElementById("txtLoginUserName").value;
+    const userPassword = document.getElementById("txtLoginPassword").value;
+    const userType = "Customer";
+
+    const options = {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ userName, userPassword, userType }),
+    };
+
+    const response = await fetch(url, options);
+
+    if (response.ok) {
+      const data = await response.json();
+      localStorage.setItem("authToken", data.token);
+      localStorage.setItem("userName", data.userName);
+
+      window.location.href = `customerPanel.html?username=${encodeURIComponent(
+        userName
+      )}`;
+    } else {
+      Swal.fire({
+        icon: "error",
+        title: "Login Failed",
+        text: "Invalid username or password. Please try again.",
+      });
+
+      document.getElementById("txtLoginUserName").value = "";
+      document.getElementById("txtLoginPassword").value = "";
+    }
   }
 }
 
@@ -202,6 +346,65 @@ async function getGeneratedReservationID() {
     });
     return null;
   }
+}
+
+//Reservation Validation
+
+async function validateReservationForm() {
+  console.log("Reservation validation is running");
+
+  // Get form values
+  const userName = document.getElementById("txtReservationUser").value.trim();
+  const userEmail = document
+    .getElementById("txtReservationUserEmail")
+    .value.trim();
+  const reservationDate = document
+    .getElementById("dateReservation")
+    .value.trim();
+  const reservationTime = document
+    .getElementById("timeReservation")
+    .value.trim();
+  const numberOfPeople = document.getElementById("people").value.trim();
+
+  // Basic validation checks
+  if (
+    userName === "" ||
+    userEmail === "" ||
+    reservationDate === "" ||
+    reservationTime === "" ||
+    numberOfPeople === ""
+  ) {
+    Swal.fire({
+      icon: "warning",
+      title: "Validation Error",
+      text: "All fields are required. Please fill out all fields.",
+    });
+    return false;
+  }
+
+  // Email validation
+  const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+  if (!emailPattern.test(userEmail)) {
+    Swal.fire({
+      icon: "warning",
+      title: "Validation Error",
+      text: "Please enter a valid email address.",
+    });
+    return false;
+  }
+
+  // Date validation (check if date is in the future)
+  const today = new Date().toISOString().split("T")[0];
+  if (new Date(reservationDate) < new Date(today)) {
+    Swal.fire({
+      icon: "warning",
+      title: "Validation Error",
+      text: "The reservation date cannot be in the past. Please select a future date.",
+    });
+    return false;
+  }
+
+  return true;
 }
 
 //Payment
@@ -387,8 +590,10 @@ const openModalBtn = document.getElementById("btnReservation");
 const closeModalBtn = document.getElementById("closeModalBtn");
 
 // Open modal
-openModalBtn.onclick = function () {
-  modal.style.display = "block";
+openModalBtn.onclick = async function () {
+  if (await validateReservationForm()) {
+    modal.style.display = "block";
+  }
 };
 
 // Close modal
